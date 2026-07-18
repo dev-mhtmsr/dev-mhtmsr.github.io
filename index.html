@@ -291,6 +291,7 @@ section{padding:100px 0}
   const navCta = document.getElementById('nav-cta');
   navCta.textContent = C.navCta;
   navCta.href = C.resumeFile;
+  navCta.style.display = C.showResume ? '' : 'none';
 
   // hero
   document.getElementById('hero-cmd').innerHTML = `<b>$</b> ${C.hero.command}`;
@@ -300,7 +301,7 @@ section{padding:100px 0}
     `<span class="grad">${C.hero.line3}</span>`;
   document.getElementById('hero-p').innerHTML = C.hero.paragraph;
   document.getElementById('hero-ctas').innerHTML =
-    `<a class="btn btn-primary" href="${C.resumeFile}" download>${C.hero.primaryBtn}</a>` +
+    (C.showResume ? `<a class="btn btn-primary" href="${C.resumeFile}" download>${C.hero.primaryBtn}</a>` : '') +
     `<a class="btn btn-ghost" href="${C.hero.secondaryUrl}" target="_blank" rel="noreferrer">${C.hero.secondaryBtn}</a>`;
 
   // metrics
@@ -371,7 +372,7 @@ section{padding:100px 0}
   document.getElementById('contact-cmd').innerHTML = `<b>$</b> ${C.contact.command}`;
   document.getElementById('contact-title').innerHTML = `${C.contact.titleLine1}<br><span>${C.contact.titleLine2}</span>`;
   document.getElementById('contact-p').textContent = C.contact.paragraph;
-  document.getElementById('contact-links').innerHTML = C.contact.links.map(l => {
+  document.getElementById('contact-links').innerHTML = C.contact.links.filter(l => C.showResume || !l.download).map(l => {
     const attrs = [];
     if (l.download) attrs.push('download');
     if (/^https?:/.test(l.href)) attrs.push('target="_blank" rel="noreferrer"');

@@ -19,6 +19,7 @@ window.CONTENT = {
   name: "Mohit Misra",
   logoUser: "mhtmsr",            // terminal-style logo: user@prod ~
   resumeFile: "Mohit_Misra_Resume_OnePage.pdf",   // must match the PDF filename in your repo
+  showResume: false,   // set to true to bring back the Resume/CV buttons & nav link
   siteTitle: "Mohit Misra — Full Stack GenAI & Agentic AI Developer",
   metaDescription: "Full Stack GenAI & Agentic AI Developer. Co-Founder & CTO at AROSCAI. RAG chatbots, LLM-vision pipelines, and multi-agent systems shipped to production on FastAPI, Claude, pgvector, and AWS.",
   footerLeft: "© 2026 Mohit Misra · Bhubaneswar, IN",
