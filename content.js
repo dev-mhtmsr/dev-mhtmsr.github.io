@@ -115,9 +115,9 @@ window.CONTENT = {
     {
       icon: "▣", tag: "CLIENT · VLSIPRO",
       title: "TalentTrack",
-      body: "<b>MERN recruitment platform</b> with semantic candidate search: a resume-embedding pipeline and cosine-similarity ranking that matches candidates to jobs <b>by meaning, not keywords</b>. REST APIs power recruiter dashboards, job postings, and candidate indexing/retrieval workflows.",
-      kpi: '▸ Contract delivered Mar 2025 – Jul 2026 · also shipped <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a>',
-      chips: ["MongoDB", "Express", "React", "Node", "Embeddings"]
+      body: "<b>MERN recruitment platform</b> built around <b>OpenAI embeddings</b> for true semantic candidate search. Every HR search query and candidate resume is converted into a vector via the <b>OpenAI embeddings API</b>, indexed in <b>MongoDB Atlas Vector Search</b>, and ranked by <b>cosine similarity</b> — so 'senior backend engineer, fintech background' matches candidates by meaning, not keyword overlap. Vector results are then narrowed with <b>metadata filtering</b> (skills, location, experience level, availability) before hitting recruiter dashboards. REST APIs power job postings and candidate indexing/retrieval end to end.",
+      kpi: '▸ Query → OpenAI embedding → Atlas Vector Search (cosine similarity) → metadata filters → ranked candidates · also shipped <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a>',
+      chips: ["MongoDB Atlas", "Vector Search", "OpenAI Embeddings", "Express", "React", "Node"]
     },
     {
       icon: "⧉", tag: "AGENTIC · ACTIVE",
@@ -161,7 +161,8 @@ window.CONTENT = {
       role: "Full Stack AI Developer",
       org: "VLSIPRO Technologies Pvt. Ltd.",
       points: [
-        "<b>Built TalentTrack</b> — MERN recruitment platform with an embeddings-based semantic candidate search and cosine-similarity ranking engine.",
+        "<b>Built TalentTrack</b> — MERN recruitment platform converting HR search queries into vector embeddings via the <b>OpenAI embeddings API</b>, stored and indexed in <b>MongoDB Atlas Vector Search</b>, and ranked by <b>cosine similarity</b> for semantic candidate matching.",
+        "<b>Layered metadata filtering</b> (skills, location, experience level, availability) on top of vector search results, so recruiters get semantically relevant candidates narrowed to hard constraints — not just a similarity score.",
         "<b>Designed REST APIs</b> for recruiter dashboards, job postings, and candidate indexing/retrieval workflows.",
         '<b>Delivered <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a></b> — course management, automated enrollment, and payment gateway integration.'
       ]
