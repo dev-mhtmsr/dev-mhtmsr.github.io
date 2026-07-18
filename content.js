@@ -116,7 +116,7 @@ window.CONTENT = {
       icon: "▣", tag: "CLIENT · VLSIPRO",
       title: "TalentTrack",
       body: "<b>MERN recruitment platform</b> with semantic candidate search: a resume-embedding pipeline and cosine-similarity ranking that matches candidates to jobs <b>by meaning, not keywords</b>. REST APIs power recruiter dashboards, job postings, and candidate indexing/retrieval workflows.",
-      kpi: "▸ Contract delivered Mar 2025 – Jul 2026 · also shipped Knowledge Spark LMS (knowledgespark.in)",
+      kpi: '▸ Contract delivered Mar 2025 – Jul 2026 · also shipped <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a>',
       chips: ["MongoDB", "Express", "React", "Node", "Embeddings"]
     },
     {
@@ -163,7 +163,7 @@ window.CONTENT = {
       points: [
         "<b>Built TalentTrack</b> — MERN recruitment platform with an embeddings-based semantic candidate search and cosine-similarity ranking engine.",
         "<b>Designed REST APIs</b> for recruiter dashboards, job postings, and candidate indexing/retrieval workflows.",
-        "<b>Delivered Knowledge Spark LMS</b> (knowledgespark.in) — course management, automated enrollment, and payment gateway integration."
+        '<b>Delivered <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a></b> — course management, automated enrollment, and payment gateway integration.'
       ]
     },
     {
