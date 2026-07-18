@@ -18,7 +18,7 @@ window.CONTENT = {
   /* ---------- BASICS ---------- */
   name: "Mohit Misra",
   logoUser: "mhtmsr",            // terminal-style logo: user@prod ~
-  resumeFile: "Mohit_Misra_Resume.pdf",   // must match the PDF filename in your repo
+  resumeFile: "Mohit_Misra_Resume_OnePage.pdf",   // must match the PDF filename in your repo
   siteTitle: "Mohit Misra — Full Stack GenAI & Agentic AI Developer",
   metaDescription: "Full Stack GenAI & Agentic AI Developer. Co-Founder & CTO at AROSCAI. RAG chatbots, LLM-vision pipelines, and multi-agent systems shipped to production on FastAPI, Claude, pgvector, and AWS.",
   footerLeft: "© 2026 Mohit Misra · Bhubaneswar, IN",
@@ -211,7 +211,7 @@ window.CONTENT = {
     titleLine2: "is where I work.",   // rendered in teal
     paragraph: "Retrieval quality, latency, cost per query, and tooling your whole team can run — if that's the engineering you need, let's talk.",
     links: [
-      { label: "⬇ Resume / CV",            href: "Mohit_Misra_Resume.pdf", download: true, primary: true },
+      { label: "⬇ Resume / CV",            href: "Mohit_Misra_Resume_OnePage.pdf", download: true, primary: true },
       { label: "✉ dev.mhtmsr@gmail.com",   href: "mailto:dev.mhtmsr@gmail.com" },
       { label: "in/ linkedin.com/in/mhtmsr", href: "https://linkedin.com/in/mhtmsr" },
       { label: "◍ aroscai.com",            href: "https://www.aroscai.com" },
