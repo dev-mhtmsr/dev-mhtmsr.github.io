@@ -1,232 +1,203 @@
 /* ============================================================
-   CONTENT.JS — EDIT THIS FILE ONLY.
-   Everything you see on the site lives here. Change the text,
-   save, refresh. You never need to touch index.html.
+   CONTENT.JS: edit this file only.
+   Everything on the site comes from here. Change the text, save,
+   refresh. You never need to touch index.html.
 
-   Tips:
    - Keep the quotes around text. If your text contains an
-     apostrophe ('), either use double quotes around the string
-     or write \' instead.
-   - <b>...</b> makes text bold (highlighted white).
-   - To remove an item from any list, delete its whole { ... },
-     block including the comma. To add one, copy an existing
-     block and edit it.
+     apostrophe ('), use double quotes around the string, or \'.
+   - <em>...</em> gives light emphasis. Use it sparingly.
+   - To remove an item from a list, delete its whole { ... },
+     block. To add one, copy an existing block and edit it.
    ============================================================ */
 
 window.CONTENT = {
 
-  /* ---------- BASICS ---------- */
   name: "Mohit Misra",
-  logoUser: "mhtmsr",            // terminal-style logo: user@prod ~
-  resumeFile: "Mohit_Misra_Resume_OnePage.pdf",   // must match the PDF filename in your repo
-  showResume: false,   // set to true to bring back the Resume/CV buttons & nav link
-  siteTitle: "Mohit Misra — Full Stack GenAI & Agentic AI Developer",
-  metaDescription: "Full Stack GenAI & Agentic AI Developer. Co-Founder & CTO at AROSCAI. RAG chatbots, LLM-vision pipelines, and multi-agent systems shipped to production on FastAPI, Claude, pgvector, and AWS.",
-  footerLeft: "© 2026 Mohit Misra · Bhubaneswar, IN",
-  footerRight: " <b></b>",
+  location: "Bhubaneswar, India",
+  siteTitle: "Mohit Misra",
+  metaDescription: "Mohit Misra, full-stack developer in Bhubaneswar. Co-founder of AROSCAI and Full Stack AI Developer at VLSIPROF Technologies. Builds web apps with FastAPI, React and Postgres, and the AI features inside them.",
+  resumeFile: "Mohit_Misra_Resume_OnePage.pdf",   // must match the PDF filename in the repo
+  showResume: false,                              // true shows a "Résumé (PDF)" link
 
-  /* ---------- HERO ---------- */
-  hero: {
-    command: "whoami",           // the "$ whoami" line
-    line1: "Mohit Misra",        // big name (a teal dot is added automatically)
-    line2: "I build Generative & Agentic AI systems that",   // grey line
-    line3: "survive production.",          // gradient line
-    paragraph: "<b>Full Stack GenAI & Agentic AI Developer</b> · Co-Founder & CTO at AROSCAI Technologies. 5+ years taking AI products end to end — <b>React frontends → FastAPI + Claude backends → AWS production</b> — including a hybrid-RAG support chatbot, an LLM-vision estimation pipeline, and multi-agent systems on LangGraph & MCP.",
-    primaryBtn: "⬇ Download Resume / CV",
-    secondaryBtn: "aroscai.com — live product ↗",
-    secondaryUrl: "https://www.aroscai.com"
+  /* ---------- INTRO ---------- */
+  intro: {
+    role: "Full-stack developer · Bhubaneswar, India",
+    status: "Full Stack GenAI & Agentic AI Developer",
+    now: [
+      { org: "AROSCAI Technologies",  role: "Co-founder & CTO",        since: "2021", url: "https://www.aroscai.com" },
+      { org: "VLSIPROF Technologies", role: "Full Stack AI Developer", since: "2025", url: "https://vlsiprof.com" }
+    ],
+    heading: "I build web software for real businesses, and the AI features that go inside it.",
+    paragraphs: [
+      "I'm Mohit. In 2021 I co-founded AROSCAI, a smart-home company in Bhubaneswar, and I've written most of its software since: the website and its support chatbot, a tool that quotes products from a photo of a switchboard, and the Online Information System our staff run the business on.",
+      "I'm also a Full Stack AI Developer at VLSIPROF Technologies, where I built Knowledge Spark, their learning and hiring platform. Both products are live, and I look after them in production.",
+      "Day to day that means Python and FastAPI on the backend, React or Next.js on the front, Postgres underneath, and Docker on AWS or a VPS."
+    ]
   },
 
-  /* ---------- METRICS (animated counters) ----------
-     n = the number counted up to; suffix = text after it (e.g. "+")
-     hot: true makes the number amber instead of teal            */
-  metrics: [
-    { n: 5,  suffix: "+", label: "years in shipping SaaS apps" },
-    { n: 3, suffix: "", label: "companies shipped for — startup, client contract & semiconductor" },,
-    { n: 2,  suffix: "",  label: "peer-reviewed publications (Springer · AAP)" },
-    { n: 2,  suffix: "", label: "voice skills & actions shipped — Alexa & Google Assistant", hot: true }
-  ],
-
-  /* ---------- CLIENTS / COMPANIES STRIP ---------- */
-  clientsLabel: "COMPANIES · CLIENTS · DELIVERIES",
-  clients: [
-    { name: "AROSCAI Technologies",  role: "CO-FOUNDER · CTO" },
-    { name: "VLSIPRO Technologies",  role: "CONTRACT CLIENT" },
-    { name: "Marquee Semiconductor", role: "DIGITAL DESIGN ENGINEER" },
-    { name: "Hyperlink Infosystem",  role: "CLIENT-SIDE SPOC & TEAM DIRECTION" }
-  ],
-
-  /* ---------- PIPELINE (Frontend → Backend → Production) ---------- */
-  pipelineSection: {
-    eyebrow: "// end-to-end ownership",
-    title: "Frontend → Backend → Production",
-    subtitle: "Most engineers own one layer. As a founder-CTO, I've had to own all three — and each layer is designed knowing what the next one costs."
-  },
-  pipeline: [
+  /* ---------- SELECTED WORK ----------
+     image: screenshot shown above the write-up
+     notes: short list of decisions worth explaining
+     gallery: optional screenshots shown in a grid (click to enlarge)   */
+  work: [
     {
-      num: "01 / FRONTEND",
-      title: "Interfaces users actually use",
-      body: "<b>React + Vite ERP/CRM</b> with JWT auth and per-module RBAC — leads, tickets, installations, B2B hierarchies, catalog, chatbot-conversation review. <b>Next.js</b> marketing sites with 19 programmatic SEO pages, JSON-LD, dynamic sitemaps/OG images, and GA4 + Meta Pixel conversion tracking. Admin panels that let <b>non-engineers update the AI's knowledge base</b> — zero redeploys.",
-      chips: ["React", "Next.js", "Vite", "Tailwind", "RBAC UI"]
+      id: "aroscai", tint: "navy",
+      summary: "A smart-home store with a support chatbot and a tool that quotes products from a photo of a switchboard.",
+      title: "AROSCAI website, support chatbot and Smart Estimate",
+      meta: "AROSCAI Technologies · Co-founder & CTO · 2021 to now",
+      url: "https://www.aroscai.com", urlLabel: "aroscai.com",
+      image: "img/sites/aroscai.webp",
+      imageAlt: "The aroscai.com homepage",
+      body: [
+        "The public side of AROSCAI is a Next.js site that sells touch panels, smart locks and video door phones. I built it along with the FastAPI backend behind it.",
+        "Two parts of it use Claude. The support chatbot answers product, warranty and policy questions from a knowledge base that staff maintain themselves. It searches with both keywords and embeddings in Postgres (pgvector), so an exact model number and a vaguely worded question both find the right page. Smart Estimate lets a customer upload a photo of their switchboard. The model counts the switches, sockets and fan regulators, and the backend matches that to panels from our catalogue."
+      ],
+      notesTitle: "Things I'd point out",
+      notes: [
+        "The model is called once per photo. If the customer corrects a count, only the matching logic runs again, which keeps the cost per estimate predictable.",
+        "I don't take the model's answer as final. Its output is validated against real panel sizes, and if nothing in the catalogue fits, the customer sees no match rather than a wrong one.",
+        "The original product list didn't match the actual products. I went through all 37 panels by hand and rebuilt the catalogue so the matcher had correct data to work with.",
+        "Deploys run from GitHub Actions to an EC2 server through AWS Systems Manager, so there are no stored AWS keys and no open SSH port. A failed health check stops the release."
+      ],
+      stack: "Next.js, FastAPI, PostgreSQL with pgvector, Claude API, fastembed, Docker, GitHub Actions, AWS (EC2, ECR, SSM, SES), Caddy",
+      galleryTitle: "AI Smart Estimate",
+      gallery: [
+        { src: "img/smart-estimate/upload.webp",          title: "Rooms and switchboard photos", caption: "Customers add each room and upload a photo of every switchboard in it." },
+        { src: "img/smart-estimate/recommendations.webp", title: "Detected loads and panel picks", caption: "The model counts switches, sockets and regulators. Any count can be corrected, and the top three matching panels update instantly." }
+      ]
     },
     {
-      num: "02 / BACKEND & AI",
-      title: "Retrieval, agents & streaming",
-      body: "<b>Async FastAPI + Anthropic Claude</b>: hybrid RAG fusing keyword/tag scoring with <b>pgvector cosine-similarity over an HNSW index</b>, SSE token streaming, and bounded tool-calling (strict schemas, whitelisted functions) into live warranty APIs. Ingestion: PDF/HTML extraction → <b>paragraph-aware chunking</b> → local ONNX embeddings on CPU — no GPU bill. Agentic systems on <b>LangGraph state machines + MCP servers</b>.",
-      chips: ["FastAPI", "Claude API", "pgvector", "LangGraph", "MCP", "SSE"]
+      id: "internal", tint: "slate",
+      summary: "The staff app AROSCAI runs on: leads, tickets, installations, warranties and the chatbot's knowledge base.",
+      title: "Online Information System ATPL",
+      meta: "AROSCAI Technologies · Staff-only web app",
+      body: [
+        "This is what the team at AROSCAI uses every day: leads, support tickets, customers, partners and distributors, every installed device and its warranty. It also has the controls for the chatbot, where staff add pages and PDFs to its knowledge base and read past conversations.",
+        "It's a React and Vite app on the same FastAPI backend as the website. Each staff account gets read or write access per module, and every change is written to an activity log. A Usage & Billing page shows what each AI feature costs, checked against Anthropic's own billing data."
+      ],
+      galleryNote: "Screens from the live system. Customer names, phone numbers and emails are blurred.",
+      gallery: [
+        { src: "img/aroscai-internal/service-dashboard.webp", title: "Service dashboard",   caption: "Installations, open tickets and warranties that expire soon." },
+        { src: "img/aroscai-internal/tickets.webp",           title: "Tickets",             caption: "Raised from the website or logged from a phone call. The customer is emailed on every status change." },
+        { src: "img/aroscai-internal/customers.webp",         title: "Customers",           caption: "Records sharing a phone, email or name are grouped, so duplicates are easy to spot." },
+        { src: "img/aroscai-internal/installations.webp",     title: "Installations",       caption: "Every serial-numbered device per customer, with its warranty status." },
+        { src: "img/aroscai-internal/product-feed.webp",      title: "Product feed",        caption: "The 37-panel catalogue that Smart Estimate matches against." },
+        { src: "img/aroscai-internal/bot-knowledgebase.webp", title: "Chatbot knowledge base", caption: "Staff add links or PDFs, and the chatbot can use them straight away." },
+        { src: "img/aroscai-internal/usage-billing.webp",     title: "Usage & billing",     caption: "AI cost by feature and by model." },
+        { src: "img/aroscai-internal/activity-log.webp",      title: "Activity log",        caption: "Who changed what, and when." },
+        { src: "img/aroscai-internal/user-management.webp",   title: "User management",     caption: "Per-module access for each staff account." }
+      ],
+      stack: "React, Vite, Tailwind CSS, FastAPI, PostgreSQL, JWT auth, Amazon SES"
     },
     {
-      num: "03 / PRODUCTION",
-      title: "Deployed, monitored, affordable",
-      body: "Containerized with <b>Docker</b>, shipped through <b>GitHub Actions CI/CD</b>, running on <b>AWS — EC2, RDS/Postgres + pgvector, S3, SES, Route 53</b>. Production decisions treated as design constraints: <b>cost per query, p95 latency, retrieval precision/recall, hallucination containment</b>. Example: Smart Estimate's deterministic re-match path means user edits never trigger repeat LLM calls.",
-      chips: ["AWS", "Docker", "GitHub Actions", "EC2 · RDS · S3", "Route 53"]
+      id: "knowledgespark", tint: "orange",
+      summary: "A learning and hiring platform for engineering students, with four kinds of user on one account system.",
+      title: "Knowledge Spark",
+      meta: "VLSIPROF Technologies · Full Stack AI Developer · 2025 to now",
+      url: "https://knowledgespark.in", urlLabel: "knowledgespark.in",
+      image: "img/sites/knowledgespark.webp",
+      imageAlt: "The knowledgespark.in homepage",
+      body: [
+        "Knowledge Spark is a learning platform for engineering students, run by VLSIPROF. It replaced their old WordPress site. There are four kinds of user: students, instructors, admins and recruiters, and one person can hold more than one role.",
+        "Students take courses and quizzes, earn certificates and buy memberships. Instructors build courses and get paid out through an earnings ledger. Recruiters search student profiles to hire from. That search uses embeddings of each student's whole profile, filtered by location, score and certifications. It started as a separate project and I later merged it into the platform."
+      ],
+      notesTitle: "Things I'd point out",
+      notes: [
+        "Admin and instructor dashboards read from daily summary tables that a background job fills overnight. They don't run heavy queries every time a page opens.",
+        "Recruiter results are ranked across all matching students before they're split into pages, so page two really is the next best candidates.",
+        "Moving off WordPress meant writing a migration for users, courses, lessons and quiz attempts. I ran it on a small pilot first and checked uploaded files against checksums before going live.",
+        "Email, payment webhooks and certificate PDFs run in background workers (Redis and arq) so they never slow down a request."
+      ],
+      stack: "Next.js, React, Tailwind CSS, FastAPI, SQLAlchemy, PostgreSQL with pgvector, PgBouncer, Redis, Razorpay, Cloudflare R2, Docker Compose, Nginx",
+      galleryTitle: "Admin, instructor and student dashboards",
+      galleryNote: "Screens from the live platform. User names, emails, profile photos and coupon codes are blurred.",
+      gallery: [
+        { src: "img/knowledgespark/admin-dashboard.webp",    title: "Admin dashboard",     caption: "Users by role, revenue, refunds and paid orders, read from daily summary tables." },
+        { src: "img/knowledgespark/course-builder.webp",     title: "Course builder",      caption: "Instructors arrange modules of lessons, PDFs and quizzes." },
+        { src: "img/knowledgespark/course-player.webp",      title: "Course player",       caption: "Students read lessons in a built-in viewer and track progress by module." },
+        { src: "img/knowledgespark/resume-ats.webp",         title: "Resume ATS score",    caption: "A resume score from rule-based checks, plus AI feedback." },
+        { src: "img/knowledgespark/orders.webp",             title: "Orders",              caption: "Course and membership purchases through Razorpay, with refunds." },
+        { src: "img/knowledgespark/membership-plans.webp",   title: "Membership plans",    caption: "Student and recruiter tiers, and the instructor revenue split." },
+        { src: "img/knowledgespark/student-membership.webp", title: "Student membership",  caption: "Students compare tiers, apply coupons and subscribe." },
+        { src: "img/knowledgespark/earnings.webp",           title: "Instructor earnings", caption: "Earnings, bank accounts and payout requests." },
+        { src: "img/knowledgespark/grading-settings.webp",   title: "Grading settings",    caption: "Quiz and assignment weights, pass mark and letter grades." },
+        { src: "img/knowledgespark/coupons.webp",            title: "Coupons",             caption: "Percent or fixed discounts, with limits enforced at checkout." },
+        { src: "img/knowledgespark/resource-usage.webp",     title: "Resource usage",      caption: "Signups, active users, enrollments and storage over time." },
+        { src: "img/knowledgespark/users.webp",              title: "Users",               caption: "Search users and change their role or status." },
+        { src: "img/knowledgespark/activity-logs.webp",      title: "Activity logs",       caption: "Admin, instructor and student activity in one feed." }
+      ]
     }
   ],
 
-  /* ---------- PROJECTS ----------
-     icon: any character/emoji · hot: true = amber icon
-     kpi: the amber highlight box (delete the line to hide it)   */
-  workSection: {
-    eyebrow: "// shipped — not demos",
-    title: "Production systems & agentic builds",
-    subtitle: "Every card below is real: serving customers at aroscai.com, delivered to a client, or in active development as open agentic infrastructure."
-  },
-  projects: [
-    {
-      icon: "⌘", tag: "PRODUCTION · AROSCAI",
-      title: "GenAI Support Chatbot",
-      body: "Customer-facing RAG assistant on <b>FastAPI + Anthropic Claude</b>. Hybrid retrieval — keyword/tag scoring fused with pgvector cosine-similarity over an <b>HNSW index</b> — so exact part numbers and vague paraphrases both land. Responses stream token-by-token via <b>SSE</b>; <b>bounded tool-calling</b> hits live warranty APIs with strict schemas, so the model looks up real data but can't invent actions.",
-      kpi: "▸ Hallucination-contained by architecture · live data via whitelisted tools only",
-      chips: ["FastAPI", "Claude", "pgvector", "HNSW", "SSE"]
-    },
-    {
-      icon: "◉", hot: true, tag: "PRODUCTION · AROSCAI",
-      title: "AI Smart Estimate",
-      body: "Switchboard photo → <b>LLM-vision extraction</b> into validated structured JSON → embedding-based catalog matching → instant lead-gen estimate cart. The critical cost decision: user edits route through a <b>deterministic re-match path</b> — pure catalog logic, zero repeat LLM calls.",
-      kpi: "▸ 1 inference per photo, not per interaction — cost-per-query as a design constraint",
-      chips: ["LLM Vision", "Structured JSON", "Embeddings"]
-    },
-    {
-      icon: "⚙", tag: "PRODUCTION · AROSCAI",
-      title: "Knowledge Pipeline + Admin",
-      body: "The unglamorous part that makes RAG work: <b>PDF/HTML extraction → paragraph-aware chunking</b> (semantic boundaries, not fixed windows) → <b>local ONNX embeddings on CPU</b> — no GPU dependency. An RBAC admin panel lets support staff update the knowledge base themselves; content re-embeds on save.",
-      kpi: "▸ 0 redeploys, 0 engineers in the loop for knowledge updates",
-      chips: ["ONNX", "Chunking", "RBAC Admin"]
-    },
-    {
-      icon: "▣", tag: "CLIENT · VLSIPRO",
-      title: "TalentTrack",
-      body: "<b>MERN recruitment platform</b> built around <b>OpenAI embeddings</b> for true semantic candidate search. Every HR search query and candidate resume is converted into a vector via the <b>OpenAI embeddings API</b>, indexed in <b>MongoDB Atlas Vector Search</b>, and ranked by <b>cosine similarity</b> — so 'senior backend engineer, fintech background' matches candidates by meaning, not keyword overlap. Vector results are then narrowed with <b>metadata filtering</b> (skills, location, experience level, availability) before hitting recruiter dashboards. REST APIs power job postings and candidate indexing/retrieval end to end.",
-      kpi: '▸ Query → OpenAI embedding → Atlas Vector Search (cosine similarity) → metadata filters → ranked candidates · also shipped <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a>',
-      chips: ["MongoDB Atlas", "Vector Search", "OpenAI Embeddings", "Express", "React", "Node"]
-    },
-    {
-      icon: "⧉", tag: "AGENTIC · ACTIVE",
-      title: "AgentDesk",
-      body: "Multi-agent support assistant: <b>retrieval, ticketing, and escalation agents</b> orchestrated as <b>LangGraph state machines</b> with LangChain tool-calling. Internal tools (order lookup, ticket creation) are exposed via <b>MCP servers</b> for dynamic agent discovery; responses ground on pgvector retrieval with reranking over a hybrid corpus.",
-      kpi: "▸ Agent hand-offs as explicit state transitions — debuggable, not vibes",
-      chips: ["LangGraph", "LangChain", "MCP", "Reranking"]
-    },
-    {
-      icon: "◈", tag: "AGENTIC · ACTIVE",
-      title: "DocMind",
-      body: "<b>MCP-native document research agent</b>: multi-step reasoning over LangGraph state graphs and LangChain retrieval chains for iterative research. Its MCP server exposes <b>search, summarization, and citation tools</b> consumable by any MCP-compatible client, with hybrid vector + keyword retrieval and structured JSON outputs.",
-      kpi: "▸ Build once, plug into any MCP client — Claude, IDEs, agents",
-      chips: ["MCP Server", "LangGraph", "Hybrid Retrieval"]
-    }
+  /* ---------- SIDE PROJECTS ---------- */
+  sideTitle: "In progress",
+  side: [
+    { title: "AgentDesk", body: "A support assistant split into separate agents for search, ticketing and escalation, using LangGraph. Internal tools are exposed through MCP servers." },
+    { title: "DocMind",   body: "A document research agent that runs as an MCP server, with search, summary and citation tools that any MCP client can use." }
   ],
 
-  /* ---------- EXPERIENCE ----------
-     now: true = filled/glowing timeline dot (current role)      */
-  experienceSection: {
-    eyebrow: "// git log --career",
-    title: "Experience",
-    subtitle: "From semiconductor-adjacent IoT systems to founding and running a GenAI product company."
-  },
+  /* ---------- EXPERIENCE ---------- */
   experience: [
     {
-      now: true,
-      span: "Nov 2021 — Present",
-      role: "Co-Founder, CTO & Director",
-      org: "AROSCAI Technologies Pvt. Ltd. · aroscai.com",
+      span: "2021 – now",
+      role: "Co-founder, CTO & Director",
+      org: "AROSCAI Technologies", orgUrl: "https://www.aroscai.com",
       points: [
-        "<b>Architected the production GenAI support chatbot</b> — FastAPI + Claude, hybrid RAG (keyword scoring + pgvector/HNSW cosine similarity), SSE streaming, bounded tool-calling for live warranty lookups.",
-        "<b>Shipped AI Smart Estimate</b> — LLM-vision structured extraction → catalog matching → lead-gen cart, with a deterministic no-LLM re-match path eliminating repeat inference costs.",
-        "<b>Built the knowledge-ingestion pipeline</b> — PDF/HTML extraction, paragraph-aware chunking, local ONNX embeddings (CPU-only) — plus an admin tool for non-engineering staff.",
-        "<b>Led an 8-engineer team</b> on the IoT smart-home platform; shipped Alexa & Google Assistant integrations in-house and directed Hyperlink Infosystem through iOS/Android app delivery.",
-        "<b>Owned production infrastructure</b> — AWS (EC2, RDS, S3, SES, Route 53), Docker builds, GitHub Actions CI/CD — and growth: 19 programmatic SEO pages, JSON-LD, GA4 + Meta Pixel tracking."
+        "Built the website, support chatbot, Smart Estimate and the Online Information System described above, and run the infrastructure they sit on.",
+        "Led a team of eight engineers on the smart-home platform, including our Alexa and Google Assistant integrations.",
+        "Managed Hyperlink Infosystem as our outside agency for the iOS and Android apps.",
+        "Set up the site's SEO: 19 generated landing pages, structured data and analytics."
       ]
     },
     {
-      span: "Mar 2025 — Jul 2026 · Contract (completed)",
+      span: "2025 – now",
       role: "Full Stack AI Developer",
-      org: "VLSIPRO Technologies Pvt. Ltd.",
+      org: "VLSIPROF Technologies", orgUrl: "https://vlsiprof.com",
       points: [
-        "<b>Built TalentTrack</b> — MERN recruitment platform converting HR search queries into vector embeddings via the <b>OpenAI embeddings API</b>, stored and indexed in <b>MongoDB Atlas Vector Search</b>, and ranked by <b>cosine similarity</b> for semantic candidate matching.",
-        "<b>Layered metadata filtering</b> (skills, location, experience level, availability) on top of vector search results, so recruiters get semantically relevant candidates narrowed to hard constraints — not just a similarity score.",
-        "<b>Designed REST APIs</b> for recruiter dashboards, job postings, and candidate indexing/retrieval workflows.",
-        '<b>Delivered <a href="https://knowledgespark.in" target="_blank" rel="noopener">Knowledge Spark LMS ↗</a></b> — course management, automated enrollment, and payment gateway integration.'
+        "Built Knowledge Spark and its recruiter search, and moved the old WordPress site's users and courses onto it.",
+        "Deploy and maintain it on a VPS with Docker Compose and Nginx."
       ]
     },
     {
-      span: "Dec 2020 — Nov 2021",
+      span: "2020 – 2021",
       role: "Digital Design Engineer",
-      org: "Marquee Semiconductor Pvt. Ltd.",
+      org: "Marquee Semiconductor",
       points: [
-        "<b>Built IoT data-acquisition systems</b> (ESP32/ESP8266) with backend logging pipelines streaming real-time sensor data to cloud servers; designed hardware-to-web API integrations.",
-        "<b>Laid the foundations of an internal project-management tool</b> that later grew in scale into corplink.ai, an independent startup entity."
+        "Built IoT data-collection devices on ESP32 and ESP8266, with a backend that logged their sensor data.",
+        "Started an internal project-management tool that later grew into corplink.ai, now a separate company."
       ]
     }
   ],
 
-  /* ---------- SKILLS ---------- */
-  skillsSection: {
-    eyebrow: "// import stack",
-    title: "The stack I ship with"
-  },
+  /* ---------- SKILLS (plain lines, no badges) ---------- */
   skills: [
-    { icon: "⌘", name: "GenAI / LLM",    items: ["RAG — hybrid keyword + vector", "LangChain · LangGraph", "MCP (Model Context Protocol)", "Anthropic Claude API", "Tool / function calling", "LLM vision extraction", "Structured outputs (JSON)", "Prompt engineering", "Chunking & embeddings", "Semantic search"] },
-    { icon: "⚡", name: "Backend",        items: ["Python (async)", "FastAPI · Pydantic", "Node.js · Express.js", "REST API design", "JWT auth · RBAC", "SSE streaming", "Scalable system design"] },
-    { icon: "◫", name: "Data",           items: ["PostgreSQL + pgvector (HNSW)", "MongoDB", "Vector databases", "Embedding pipelines"] },
-    { icon: "▤", name: "Frontend",       items: ["React.js", "Next.js", "Vite", "Tailwind CSS", "Responsive UI"] },
-    { icon: "☁", name: "Cloud & DevOps", items: ["AWS — EC2 · RDS · S3 · SES · Route 53", "Docker & Docker Compose", "GitHub Actions CI/CD", "Cloud deployment"] },
-    { icon: "⇌", name: "IoT",            items: ["ESP32 / ESP8266", "MQTT · HTTP", "Sensor data pipelines", "Alexa Skills", "Google Assistant"] }
+    { name: "Backend",  text: "Python, FastAPI, Pydantic, SQLAlchemy, Alembic, Redis and arq, REST APIs, JWT auth" },
+    { name: "Frontend", text: "React, Next.js, Vite, Tailwind CSS" },
+    { name: "Data",     text: "PostgreSQL, pgvector, PgBouncer, MongoDB" },
+    { name: "AI",       text: "Claude API, retrieval (RAG), embeddings, tool calling, image extraction, LangChain, LangGraph, MCP" },
+    { name: "Infra",    text: "Docker, GitHub Actions, AWS (EC2, ECR, SSM, S3, SES, RDS), Nginx, Caddy, Cloudflare" },
+    { name: "Hardware", text: "ESP32, ESP8266, MQTT, Alexa skills, Google Assistant actions" }
   ],
 
-  /* ---------- CREDENTIALS ---------- */
-  credentialsSection: {
-    eyebrow: "// credentials --verify",
-    title: "Education, certification & recognition"
-  },
-  credentials: [
-    { heading: "EDUCATION",     lines: ["<b>B.Tech, Computer Science & Engineering</b>", "National Institute of Science & Technology (NIST), BPUT · 2017–2021", "<b>CGPA 9.06</b> · Certificate of Excellence (SGPA 9.21)"] },
-    { heading: "CERTIFICATION", lines: ["<b>RAG and Agentic AI Professional Certificate — IBM</b> (verified)", "RAG systems, AI agents, LangChain, LangGraph, vector databases, multi-agent workflows"] },
-    { heading: "PUBLICATIONS",  lines: ["<b>Two-Wheeler Anti-Theft System</b> — three-layer architecture · Springer Singapore, 2022", "<b>RF-Based Social Distance Smart Band</b> — Apple Academic Press, 2022"] },
-    { heading: "ACHIEVEMENTS",  lines: ["<b>Top 10 Finalist</b> — CSI In-App Student Project Awards 2020", "<b>Top 9 Teams</b> — NASA Space Apps Challenge 2019"] }
+  /* ---------- EDUCATION & OTHER ---------- */
+  education: [
+    "B.Tech in Computer Science, National Institute of Science & Technology, Berhampur (BPUT), 2017–2021. CGPA 9.06.",
+    "IBM RAG and Agentic AI Professional Certificate."
+  ],
+  publications: [
+    "Two-Wheeler Anti-Theft System. Springer Singapore, 2022.",
+    "RF-Based Social Distance Smart Band. Apple Academic Press, 2022."
+  ],
+  awards: [
+    "Top 10 finalist, CSI In-App Student Project Awards, 2020.",
+    "Top 9 teams, NASA Space Apps Challenge, 2019."
   ],
 
   /* ---------- CONTACT ---------- */
   contact: {
-    command: 'open --to "Full Stack GenAI / Agentic AI roles"',
-    titleLine1: "The prototype-to-production gap",
-    titleLine2: "is where I work.",   // rendered in teal
-    paragraph: "Retrieval quality, latency, cost per query, and tooling your whole team can run — if that's the engineering you need, let's talk.",
-    links: [
-      { label: "⬇ Resume / CV",            href: "Mohit_Misra_Resume_OnePage.pdf", download: true, primary: true },
-      { label: "✉ dev.mhtmsr@gmail.com",   href: "mailto:dev.mhtmsr@gmail.com" },
-      { label: "in/ linkedin.com/in/mhtmsr", href: "https://linkedin.com/in/mhtmsr" },
-      { label: "◍ aroscai.com",            href: "https://www.aroscai.com" },
-      { label: "✆ +91 79783 19648",        href: "tel:+917978319648" }
-    ]
-  },
-
-  /* ---------- NAV LINKS ---------- */
-  nav: [
-    { label: "How I Ship",  target: "#pipeline" },
-    { label: "Work",        target: "#work" },
-    { label: "Experience",  target: "#experience" },
-    { label: "Stack",       target: "#skills" },
-    { label: "Contact",     target: "#contact" }
-  ],
-  navCta: "resume --download"
+    text: "I'm open to full-stack and AI engineering roles, and to freelance work on similar systems. Email is the best way to reach me.",
+    email: "dev.mhtmsr@gmail.com",
+    phone: "+91 79783 19648",
+    linkedin: "https://linkedin.com/in/mhtmsr"
+  }
 };

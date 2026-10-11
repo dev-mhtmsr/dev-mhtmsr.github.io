@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#16203A"/>
+  <!-- hoodie -->
+  <path d="M13 64c0-14 8-22 19-22s19 8 19 22z" fill="#3B5BDB"/>
+  <path d="M27 42.5l5 6 5-6" fill="none" stroke="#2C47B5" stroke-width="2" stroke-linejoin="round"/>
+  <!-- head -->
+  <rect x="29" y="35" width="6" height="7" rx="2" fill="#C98E62"/>
+  <circle cx="32" cy="27" r="10" fill="#E0A878"/>
+  <!-- hair -->
+  <path d="M21.6 27.5C21 18.5 26 14 32.5 14c6.6 0 11 4.6 10 13-2.6-4.4-7.5-6.4-13-5.2-3.4.8-6 2.6-7.9 5.7z" fill="#1B1A17"/>
+  <!-- glasses -->
+  <g fill="none" stroke="#1B1A17" stroke-width="1.6">
+    <rect x="24.2" y="25.6" width="6.4" height="5" rx="1.6"/>
+    <rect x="33.4" y="25.6" width="6.4" height="5" rx="1.6"/>
+    <path d="M30.6 27.6h2.8"/>
+  </g>
+  <!-- laptop -->
+  <rect x="14" y="45" width="36" height="17" rx="2.5" fill="#D9D6CF"/>
+  <rect x="10" y="61" width="44" height="3" rx="1.5" fill="#B9B5AC"/>
+  <path d="M28 50.5l-4 3.2 4 3.2M36 50.5l4 3.2-4 3.2M33.4 49.5l-2.8 8.4" fill="none" stroke="#16203A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
