@@ -1,0 +1,736 @@
+<title>Mohit Misra</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mohit Misra, full-stack and AI engineer. Production-grade SaaS, web apps and AI features, shipped in 7-day releases. Available for hire, freelance and fixed-price projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: release-poster. Giant condensed headline, mono "build log" details, yellow labels; one interactive audience panel in the hero. */
+:root{
+  --bg:#F2F3EF; --surface:#FFFFFF; --fg:#16181A; --muted:#5A605C; --line:#D8DCD4;
+  --accent:#0E6B60; --accent-ink:#FFFFFF; --tag:#FFD84A; --tag-ink:#16181A;
+  --display:'Big Shoulders Display',Impact,'Arial Narrow',sans-serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101312; --surface:#181C1B; --fg:#E9ECE7; --muted:#9BA29D; --line:#2B312F;
+  --accent:#43C4AF; --accent-ink:#05201C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101312; --surface:#181C1B; --fg:#E9ECE7; --muted:#9BA29D; --line:#2B312F;
+  --accent:#43C4AF; --accent-ink:#05201C; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(56px,8vw,96px)}
+section+section{border-top:1px solid var(--line)}
+
+.tag{display:inline-block;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--tag);color:var(--tag-ink);padding:7px 10px 6px;border-radius:4px;transform:rotate(-1.5deg);justify-self:start}
+.h2{font:800 clamp(38px,6vw,64px)/.95 var(--display);text-transform:uppercase;letter-spacing:.005em}
+.lede{color:var(--muted);font-size:18px;max-width:62ch}
+.head{display:grid;gap:16px;margin-bottom:40px}
+.mono{font-family:var(--mono)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;font:600 15.5px var(--body);text-decoration:none;border:1.5px solid var(--fg);cursor:pointer;background:transparent;color:var(--fg);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font:800 22px/1 var(--display);text-transform:uppercase;text-decoration:none;letter-spacing:.02em}
+.brand span{color:var(--accent)}
+.top nav{display:flex;gap:4px;align-items:center}
+.top nav a{font-size:14.5px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px}
+.top nav a:hover{color:var(--fg)}
+.top nav a.cta{color:var(--accent-ink);background:var(--accent);font-weight:600;padding:8px 14px;border-radius:999px}
+@media (max-width:700px){.top nav a:not(.cta){display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(40px,6vw,72px)}
+.hero>div{min-width:0}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.avail{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--mono);color:var(--muted)}
+.avail i{width:8px;height:8px;border-radius:50%;background:#22A06B;box-shadow:0 0 0 4px color-mix(in srgb,#22A06B 22%,transparent)}
+.hero h1{font:900 clamp(54px,9.2vw,110px)/.86 var(--display);text-transform:uppercase;letter-spacing:-.005em;margin:20px 0 24px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{font-size:clamp(17px,1.6vw,19px)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* audience panel */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.tabs button{font:600 14.5px var(--body);padding:14px 8px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent}
+.tabs button+button{border-left:1px solid var(--line)}
+.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent)}
+.pane{padding:24px;display:grid;gap:16px}
+.pane .k{font:500 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.pane h3{font:800 clamp(28px,3.4vw,36px)/1 var(--display);text-transform:uppercase}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.checks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;font-size:15.5px;line-height:1.45}
+.checks li::before{content:"";width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.pane .btn{justify-self:start}
+
+/* facts strip */
+.facts{display:flex;flex-wrap:wrap;gap:12px 32px;padding-block:22px;border-top:1px solid var(--line);font:500 13.5px var(--mono);color:var(--muted)}
+.facts b{color:var(--fg);font-weight:500}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.cell{background:var(--surface);padding:26px 24px;display:grid;gap:8px;align-content:start}
+.cell h3{font:800 24px/1 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.cell p{color:var(--muted);font-size:15px}
+.cell .ex{font:400 12.5px var(--mono);color:var(--accent)}
+
+/* production checklist */
+.prod{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--line)}
+@media (max-width:760px){.prod{grid-template-columns:1fr}}
+.prod div{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+@media (max-width:480px){.prod div{grid-template-columns:1fr;gap:4px}}
+.prod dt{font-weight:700}
+.prod dd{margin:0;color:var(--muted);font-size:15px}
+
+/* work */
+.case{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.case+.case{margin-top:clamp(56px,7vw,96px)}
+.case>div{min-width:0;display:grid;gap:12px}
+@media (max-width:860px){.case{grid-template-columns:1fr}}
+.case figure{margin:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.case figure img{display:block;width:100%;height:auto}
+.case h3{font:800 clamp(30px,4vw,42px)/.95 var(--display);text-transform:uppercase}
+.case .meta{font:500 12.5px var(--mono);color:var(--muted)}
+.case p{color:var(--muted);max-width:60ch}
+.case ul{margin:0;padding-left:18px;display:grid;gap:8px;font-size:15px}
+.case .stack{font:400 12.5px/1.6 var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.case a.site{font:500 13px var(--mono);color:var(--accent)}
+
+/* 7 days */
+.days{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+@media (max-width:980px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:620px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:380px){.days{grid-template-columns:1fr}}
+.days li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:6px;align-content:start}
+.days li:last-child{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.days li:last-child p{color:inherit;opacity:.85}
+.days .d{font:900 40px/.85 var(--display);text-transform:uppercase}
+.days h3{font:700 15.5px var(--body)}
+.days p{color:var(--muted);font-size:14px;line-height:1.45}
+.note{margin-top:20px;color:var(--muted);font-size:15px;max-width:70ch}
+
+/* ways */
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.ways{grid-template-columns:1fr}}
+.way{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px}
+.way.pick{border:2px solid var(--accent)}
+.way h3{font:800 34px/1 var(--display);text-transform:uppercase}
+.way .for{color:var(--muted);font-size:15px}
+.way ul{margin:4px 0 0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+.way .btn{margin-top:12px}
+
+/* experience */
+.xp{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(32px,5vw,64px)}
+@media (max-width:860px){.xp{grid-template-columns:1fr}}
+.xp>div{min-width:0}
+.job{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+@media (max-width:480px){.job{grid-template-columns:1fr;gap:4px}}
+.job .span{font:500 13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.job h3{font:700 17px var(--body)}
+.job .org{color:var(--muted);font-size:15px}
+.job ul{margin:8px 0 0;padding-left:18px;display:grid;gap:4px;font-size:15px;color:var(--muted)}
+.skills{display:grid;gap:0;border-top:1px solid var(--line)}
+.skills div{padding:14px 0;border-bottom:1px solid var(--line);display:grid;gap:2px}
+.skills dt{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.skills dd{margin:0;font-size:15px}
+.extra{margin-top:24px;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
+
+/* faq */
+.faq{max-width:800px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-weight:600;font-size:17px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:800 28px var(--display);color:var(--accent)}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding:0 0 20px;color:var(--muted);max-width:65ch}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,64px)}
+.contact>div,.contact>form{min-width:0}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:14px}
+input,select,textarea{font:16px var(--body);color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:110px;resize:vertical}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.out{grid-template-columns:1fr}}
+.lines{display:grid;gap:12px;margin-top:28px}
+.line{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.line .k{font:500 11.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;width:76px}
+.line .v{font-weight:600;user-select:all;flex:1;min-width:0;overflow-wrap:anywhere}
+.copy{font:600 13px var(--body);border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:999px;padding:6px 12px;cursor:pointer}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* system design diagrams */
+.arch{--ink:var(--fg);--ink-2:var(--fg);--link:var(--accent);--line-2:var(--line);--sans:var(--body);--ok:#22A06B;--k-client:var(--ink-2);--k-edge:#E0A15E;--k-app:var(--link);--k-ai:#D58CF0;--k-data:var(--ok);--k-queue:#F0B429;--k-ext:var(--muted);
+  border:1px solid var(--line);background:var(--surface);border-radius:22px;overflow:hidden}
+.arch-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 18px;border-bottom:1px solid var(--line)}
+.arch-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.arch-tabs button,.arch-mode button{font:inherit;font-size:13.5px;cursor:pointer;border-radius:9px;padding:7px 12px;border:1px solid transparent;background:none;color:var(--muted);transition:color .15s,background .15s,border-color .15s}
+.arch-tabs button:hover,.arch-mode button:hover:not(:disabled){color:var(--ink)}
+.arch-tabs button[aria-selected="true"]{color:var(--ink);background:var(--bg);border-color:var(--line-2)}
+.arch-mode{display:flex;gap:2px;padding:3px;border:1px solid var(--line-2);border-radius:11px;background:var(--bg)}
+.arch-mode button{padding:5px 11px;font-size:13px}
+.arch-mode button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 0 var(--line-2)}
+.arch-mode button:disabled{opacity:.4;cursor:not-allowed}
+.arch-sum{padding:16px 22px 0;color:var(--ink-2);font-size:15px;max-width:860px}
+.arch-body{display:block}
+.arch-canvas{overflow-x:auto;padding:12px 14px 6px}
+.arch-canvas svg{display:block;width:100%;min-width:760px;height:auto}
+.arch-panel{border-top:1px solid var(--line);padding:20px 22px;font-size:14.5px;min-height:170px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 40px;align-content:start}
+@media (max-width:820px){.arch-panel{grid-template-columns:1fr}}
+.arch-panel .lbl:first-child{margin-top:0}
+.arch-panel .k{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.arch-panel .k i{width:8px;height:8px;border-radius:2px}
+.arch-panel h3{font-size:19px;font-weight:600;letter-spacing:-.015em;margin-bottom:4px}
+.arch-panel .ps{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+.arch-panel p{color:var(--ink-2);margin-bottom:12px}
+.arch-panel code{font-family:var(--mono);font-size:12px;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 6px;display:inline-block;line-height:1.5}
+.arch-panel .talk{border-left:2px solid var(--link);padding-left:12px;color:var(--ink)}
+.arch-panel .lbl{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:14px 0 6px}
+.arch-panel .hint{color:var(--muted)}
+.arch-foot{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 40px;padding:18px 22px 22px;border-top:1px solid var(--line);align-items:start}
+@media (max-width:820px){.arch-foot{grid-template-columns:1fr}}
+.arch-legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12.5px;color:var(--muted);max-width:260px}
+.arch-legend span{display:inline-flex;align-items:center;gap:6px}
+.arch-legend i{width:9px;height:9px;border-radius:2px}
+.arch-notes{list-style:none;display:grid;gap:8px}
+.arch-notes li{position:relative;padding-left:18px;font-size:14.5px;color:var(--ink-2)}
+.arch-notes li::before{content:"";position:absolute;left:2px;top:.7em;width:7px;height:1.5px;background:var(--link)}
+#arch-svg{color:var(--muted)}
+#arch-svg .grp rect{fill:none;stroke:var(--line-2);stroke-dasharray:5 5}
+#arch-svg .grp text{font:500 11.5px var(--mono);fill:var(--muted)}
+#arch-svg .edge path{fill:none;stroke:var(--line-2);stroke-width:1.5;transition:stroke .2s,opacity .2s}
+#arch-svg .edge.flow path{stroke-dasharray:5 6;animation:dash 1.4s linear infinite}
+#arch-svg .edge.dashed path{stroke-dasharray:3 5}
+#arch-svg .edge text{font:500 10.5px var(--mono);fill:var(--muted);paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+#arch-svg .edge.hot{color:var(--link)}
+#arch-svg .edge.hot path{stroke:var(--link)}
+#arch-svg .edge.hot text{fill:var(--ink)}
+#arch-svg .edge.dim{opacity:.25}
+#arch-svg .node{cursor:pointer;outline:none;transition:opacity .2s}
+#arch-svg .node rect.box{fill:var(--surface);stroke:var(--line-2);stroke-width:1.2;transition:stroke .2s,fill .2s}
+#arch-svg .node .t{font:600 13px var(--sans);fill:var(--ink)}
+#arch-svg .node .s{font:400 10.5px var(--mono);fill:var(--muted)}
+#arch-svg .node:hover rect.box,#arch-svg .node:focus-visible rect.box{stroke:var(--muted)}
+#arch-svg .node.sel rect.box{stroke:var(--link);stroke-width:2;fill:color-mix(in srgb,var(--link) 7%,var(--surface))}
+#arch-svg .node.dim{opacity:.45}
+#arch-svg .node.ext rect.box{stroke-dasharray:4 4}
+@keyframes dash{to{stroke-dashoffset:-22}}
+@media (prefers-reduced-motion:reduce){#arch-svg .edge.flow path{animation:none}}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Mohit <span>Misra</span></a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#design">System design</a>
+      <a href="#seven">7-day release</a>
+      <a href="#ways">Work with me</a>
+      <a href="#about">Experience</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="avail"><i></i>Open to full-time roles, freelance and projects</span>
+      <h1>Production-grade software.<br><em>Shipped in 7 days.</em></h1>
+      <p class="lede">I'm Mohit, Co-founder, Director &amp; CTO of <a href="https://www.aroscai.com" target="_blank" rel="noopener">AROSCAI Technologies</a>, and a full-stack GenAI and agentic AI engineer. I build web apps and SaaS on the FARM stack (FastAPI, React, MongoDB), with AI chatbots, RAG and agents built in, and I deploy and run them in production. Two platforms I built are live today with paying customers and daily users.</p>
+      <div class="ctas">
+        <a class="btn go" href="#contact">Start a conversation</a>
+        <a class="btn" href="#work">See live work</a>
+        <a class="btn" href="Mohit_Misra_Resume_OnePage.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="tabs" role="tablist" aria-label="What are you looking for?">
+        <button role="tab" id="t-hire" aria-selected="true" data-k="hire">Hiring</button>
+        <button role="tab" id="t-free" aria-selected="false" data-k="free">Freelance</button>
+        <button role="tab" id="t-proj" aria-selected="false" data-k="proj">A project</button>
+      </div>
+      <div class="pane" role="tabpanel" aria-live="polite">
+        <span class="k" id="p-k"></span>
+        <h3 id="p-h"></h3>
+        <ul class="checks" id="p-list"></ul>
+        <a class="btn go" id="p-cta" href="#contact"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="facts">
+      <span>Now: <b>Co-founder, Director &amp; CTO, AROSCAI Technologies</b></span>
+      <span><b>2</b> production platforms live</span>
+      <span>Shipping since <b>2021</b></span>
+      <span>Led a team of <b>8</b> engineers</span>
+      <span><b>FARM stack · GenAI · Agentic AI</b></span>
+      <span>Berhampur, Odisha · remote worldwide</span>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">What I build</span>
+        <h2 class="h2">Web apps with<br>AI built in</h2>
+        <p class="lede">I focus on web apps, not native mobile apps. They run on every phone and laptop through the browser, ship faster, and update for every user the moment I deploy.</p>
+      </div>
+      <div class="grid">
+        <div class="cell"><h3>Web apps &amp; SaaS</h3><p>FARM stack apps with sign-up, roles, Razorpay subscriptions, dashboards and admin panels. A product people can pay for, not a demo.</p><span class="ex">e.g. Knowledge Spark</span></div>
+        <div class="cell"><h3>GenAI features</h3><p>Chatbots grounded in your own docs (RAG), document and image extraction, semantic search, AI writing and scoring.</p><span class="ex">e.g. AROSCAI chatbot, Smart Estimate</span></div>
+        <div class="cell"><h3>Internal tools</h3><p>CRM, ticketing, inventory and operations dashboards that replace spreadsheets your team has outgrown.</p><span class="ex">e.g. AROSCAI staff system</span></div>
+        <div class="cell"><h3>Agentic AI</h3><p>Multi-agent workflows with LangGraph, tool calling and MCP servers that let AI search, file tickets and act inside your own systems.</p><span class="ex">e.g. AgentDesk, DocMind (in progress)</span></div>
+        <div class="cell"><h3>Migrations &amp; rescues</h3><p>Move off WordPress or a stalled codebase without losing users or data. Fix what another team left half-done.</p><span class="ex">e.g. WordPress → Knowledge Spark</span></div>
+        <div class="cell"><h3>DevOps &amp; deploys</h3><p>Docker, CI/CD, AWS or a VPS. Releases that roll back on their own if a health check fails.</p><span class="ex">e.g. GitHub Actions → EC2 via SSM</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="production">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Production grade</span>
+        <h2 class="h2">What “production grade”<br>means in my work</h2>
+        <p class="lede">These ship in every build. Each one is already running in a system I built.</p>
+      </div>
+      <dl class="prod">
+        <div><dt>Auth &amp; permissions</dt><dd>JWT auth, multiple roles per user, read and write access set per module.</dd></div>
+        <div><dt>Audit trail</dt><dd>Every change records who made it and when, so mistakes can be traced and undone.</dd></div>
+        <div><dt>Background jobs</dt><dd>Email, payment webhooks and PDFs run in workers (Redis, arq), so requests stay fast.</dd></div>
+        <div><dt>Fast dashboards</dt><dd>Heavy reports read from summary tables filled overnight, not from live queries on every page load.</dd></div>
+        <div><dt>Safe deploys</dt><dd>CI/CD with health checks. No stored cloud keys and no open SSH port on the servers.</dd></div>
+        <div><dt>Safe migrations</dt><dd>Run on a pilot first, with uploaded files checked against checksums before go-live.</dd></div>
+        <div><dt>AI that's checked</dt><dd>Model output is validated before use. If the answer doesn't fit real data, users see “no match” instead of a wrong answer.</dd></div>
+        <div><dt>Known AI costs</dt><dd>Cost tracked per feature and per model, and checked against the provider's own billing.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Live in production</span>
+        <h2 class="h2">Selected work</h2>
+      </div>
+
+      <article class="case">
+        <figure><img src="img/sites/aroscai.webp" alt="The aroscai.com homepage" loading="lazy" width="1600" height="1000"></figure>
+        <div>
+          <span class="meta">AROSCAI Technologies · Co-founder &amp; CTO · 2021 to now</span>
+          <h3>Smart-home store, AI chatbot &amp; Smart Estimate</h3>
+          <p>A Next.js store and FastAPI backend. The support chatbot answers product and warranty questions from a knowledge base staff maintain. Smart Estimate turns a photo of a switchboard into a product quote.</p>
+          <ul>
+            <li>Hybrid keyword and embedding search in Postgres (pgvector), so model numbers and vague questions both find the right answer.</li>
+            <li>One model call per photo. If a customer corrects a count, only the matching logic re-runs, so cost per estimate stays predictable.</li>
+            <li>Deploys from GitHub Actions to EC2 through AWS SSM. A failed health check stops the release.</li>
+          </ul>
+          <p class="stack">Next.js · FastAPI · PostgreSQL + pgvector · Claude API · Docker · GitHub Actions · AWS (EC2, ECR, SSM, SES) · Caddy</p>
+          <a class="site" href="https://www.aroscai.com" target="_blank" rel="noopener">aroscai.com ↗</a>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure><img src="img/aroscai-internal/service-dashboard.webp" alt="Service dashboard of the AROSCAI staff system, with customer details blurred" loading="lazy" width="1600" height="1000"></figure>
+        <div>
+          <span class="meta">AROSCAI Technologies · Staff-only web app</span>
+          <h3>Online Information System</h3>
+          <p>The app the AROSCAI team runs the business on: leads, support tickets, customers, partners, installed devices and warranties, plus the controls for the chatbot's knowledge base.</p>
+          <ul>
+            <li>Per-module read and write access for every staff account, and an activity log of every change.</li>
+            <li>Customers are emailed on every ticket status change.</li>
+            <li>A usage and billing page shows what each AI feature costs.</li>
+          </ul>
+          <p class="stack">React · Vite · Tailwind CSS · FastAPI · PostgreSQL · JWT · Amazon SES</p>
+        </div>
+      </article>
+
+      <article class="case">
+        <figure><img src="img/sites/knowledgespark.webp" alt="The knowledgespark.in homepage" loading="lazy" width="1600" height="1000"></figure>
+        <div>
+          <span class="meta">VLSIPROF Technologies · Full Stack AI Developer · 2025 to now</span>
+          <h3>Knowledge Spark</h3>
+          <p>A learning and hiring SaaS for engineering students that replaced a WordPress site. Students, instructors, admins and recruiters share one account system, and one person can hold several roles.</p>
+          <ul>
+            <li>Courses, quizzes, certificates, memberships, coupons, Razorpay payments, refunds and instructor payouts.</li>
+            <li>Recruiter search over embeddings of each student's full profile, ranked across all results before pagination.</li>
+            <li>WordPress users, courses and quiz history migrated, piloted first and verified with checksums.</li>
+          </ul>
+          <p class="stack">Next.js · FastAPI · SQLAlchemy · PostgreSQL + pgvector · PgBouncer · Redis · Razorpay · Cloudflare R2 · Docker Compose · Nginx</p>
+          <a class="site" href="https://knowledgespark.in" target="_blank" rel="noopener">knowledgespark.in ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="design">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">System design</span>
+        <h2 class="h2">How they run today,<br>and how they scale</h2>
+        <p class="lede">The real architecture of both platforms in production, and the design for 10 to 100 times the traffic. Switch between them, toggle the view, and select any box for details.</p>
+      </div>
+      <div class="arch">
+        <div class="arch-bar">
+          <div class="arch-tabs" role="tablist" id="arch-tabs"></div>
+          <div class="arch-mode" id="arch-mode" role="group" aria-label="View">
+            <button type="button" data-mode="built">Today</button>
+            <button type="button" data-mode="scale">At scale</button>
+          </div>
+        </div>
+        <p class="arch-sum" id="arch-sum"></p>
+        <div class="arch-body">
+          <div class="arch-canvas"><svg id="arch-svg" role="img"></svg></div>
+          <aside class="arch-panel" id="arch-panel" aria-live="polite"></aside>
+        </div>
+        <div class="arch-foot">
+          <div class="arch-legend" id="arch-legend"></div>
+          <ul class="arch-notes" id="arch-notes"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="seven">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">How I deliver</span>
+        <h2 class="h2">One release,<br>seven days</h2>
+        <p class="lede">Every engagement runs in 7-day releases. You get a preview link from day 2 and a working, deployed release on day 7.</p>
+      </div>
+      <ol class="days">
+        <li><span class="d">D1</span><h3>Scope</h3><p>Lock what ships this week, the data model and the architecture.</p></li>
+        <li><span class="d">D2</span><h3>Foundation</h3><p>Repo, auth, database, CI/CD and a live preview URL.</p></li>
+        <li><span class="d">D3</span><h3>Core build</h3><p>The main screens and APIs your users need most.</p></li>
+        <li><span class="d">D4</span><h3>Core build</h3><p>Finish core flows and review them with you on the preview.</p></li>
+        <li><span class="d">D5</span><h3>Integrations</h3><p>Payments, email, AI features and third-party APIs.</p></li>
+        <li><span class="d">D6</span><h3>Hardening</h3><p>Tests, validation, error handling, logging and backups.</p></li>
+        <li><span class="d">D7</span><h3>Ship</h3><p>Production deploy, docs, handover call. It's live.</p></li>
+      </ol>
+      <p class="note">Bigger products are split into back-to-back 7-day releases, so something real goes live every week instead of everything arriving at the end.</p>
+    </div>
+  </section>
+
+  <section id="ways">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Work with me</span>
+        <h2 class="h2">Three ways to start</h2>
+      </div>
+      <div class="ways">
+        <div class="way">
+          <h3>Hire me</h3>
+          <p class="for">Full-time roles: full-stack, GenAI / agentic AI engineer or founding engineer.</p>
+          <ul>
+            <li>Remote, or on-site in Berhampur, Odisha</li>
+            <li>Comfortable owning backend, frontend and infra</li>
+            <li>Used to production on-call and real users</li>
+          </ul>
+          <a class="btn" href="#contact" data-intent="Hiring">Discuss a role</a>
+        </div>
+        <div class="way pick">
+          <h3>Fixed-price build</h3>
+          <p class="for">A web app, SaaS, internal tool or AI agent, delivered in 7-day releases.</p>
+          <ul>
+            <li>Fixed quote after one call</li>
+            <li>Deployed release every 7 days</li>
+            <li>You own the code, repo and accounts</li>
+          </ul>
+          <a class="btn go" href="#contact" data-intent="Project">Get a quote</a>
+        </div>
+        <div class="way">
+          <h3>Freelance / contract</h3>
+          <p class="for">Join your team for a sprint, a feature or ongoing monthly work.</p>
+          <ul>
+            <li>Hourly or monthly retainer</li>
+            <li>Works in your repo, your tools, your process</li>
+            <li>Weekly demo of what shipped</li>
+          </ul>
+          <a class="btn" href="#contact" data-intent="Freelance">Book a slot</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap xp">
+      <div>
+        <div class="head">
+          <span class="tag">Experience</span>
+          <h2 class="h2">Where I've<br>shipped</h2>
+        </div>
+        <div class="job"><span class="span">2021 – now</span><div><h3>Co-founder, Director &amp; CTO</h3><p class="org"><a href="https://www.aroscai.com" target="_blank" rel="noopener">AROSCAI Technologies</a> · Berhampur, Odisha · current</p><ul><li>Built the website, AI chatbot, Smart Estimate and the staff system, and run the infrastructure.</li><li>Led a team of eight engineers on the smart-home platform, including Alexa and Google Assistant integrations.</li></ul></div></div>
+        <div class="job"><span class="span">2025 – now</span><div><h3>Full Stack AI Developer</h3><p class="org">VLSIPROF Technologies</p><ul><li>Built Knowledge Spark and its recruiter search, and migrated the old WordPress platform onto it.</li><li>Deploy and maintain it with Docker Compose and Nginx.</li></ul></div></div>
+        <div class="job"><span class="span">2020 – 2021</span><div><h3>Digital Design Engineer</h3><p class="org">Marquee Semiconductor</p><ul><li>Built ESP32 and ESP8266 IoT data-collection devices and the backend that logged their data.</li><li>Started an internal project tool that later became corplink.ai.</li></ul></div></div>
+      </div>
+      <div>
+        <dl class="skills">
+          <div><dt>FARM stack</dt><dd>FastAPI, React, MongoDB</dd></div>
+          <div><dt>Backend</dt><dd>Python, FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, arq, REST, JWT</dd></div>
+          <div><dt>Frontend</dt><dd>React, Next.js, Vite, Tailwind CSS</dd></div>
+          <div><dt>Data</dt><dd>PostgreSQL, pgvector, PgBouncer, MongoDB</dd></div>
+          <div><dt>GenAI</dt><dd>Claude API, RAG, embeddings, prompt design, vision extraction, LangChain</dd></div>
+          <div><dt>Agentic AI</dt><dd>LangGraph multi-agent workflows, tool calling, MCP servers</dd></div>
+          <div><dt>Infra</dt><dd>Docker, GitHub Actions, AWS (EC2, ECR, SSM, S3, SES, RDS), Nginx, Caddy, Cloudflare</dd></div>
+          <div><dt>Hardware</dt><dd>ESP32, ESP8266, MQTT, Alexa skills, Google Assistant actions</dd></div>
+        </dl>
+        <div class="extra">
+          <span>B.Tech Computer Science, NIST Berhampur, 2021 · CGPA 9.06</span>
+          <span>IBM RAG and Agentic AI Professional Certificate</span>
+          <span>Published: Springer (2022), Apple Academic Press (2022)</span>
+          <span>Top 9 teams, NASA Space Apps Challenge 2019</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">FAQ</span>
+        <h2 class="h2">Before you ask</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Can a real product be built in 7 days?</summary><p>A focused first release, yes: the core flow, auth, database and a production deploy. Larger products ship as a series of 7-day releases, and each one is live and usable, not a mockup.</p></details>
+        <details><summary>Who owns the code?</summary><p>You do. The repo, cloud accounts and domains are in your name from day one, and you get documentation at handover.</p></details>
+        <details><summary>Do you work with an existing codebase?</summary><p>Yes. I can join your repo, follow your conventions and ship features, fix bugs or finish a stalled project.</p></details>
+        <details><summary>What stack do you use?</summary><p>The FARM stack (FastAPI, React, MongoDB), or PostgreSQL when the data is relational, deployed with Docker on AWS or a VPS. If your team already uses something else, I'll work in that.</p></details>
+        <details><summary>Do you build mobile apps?</summary><p>I build web apps, including installable ones (PWAs) that sit on the home screen like an app. For most products that means one codebase, no app-store wait, and updates that reach every user instantly. If you need a native app later, the same backend serves it.</p></details>
+        <details><summary>Will you sign an NDA?</summary><p>Yes, before you share anything sensitive.</p></details>
+        <details><summary>What happens after launch?</summary><p>You get a free bug-fix window after each release. After that I can maintain and extend it on a monthly retainer, or hand it over fully to your team.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <div class="head">
+          <span class="tag">Reply within a day</span>
+          <h2 class="h2">Let's talk</h2>
+          <p class="lede">Hiring, a contract or a project to build: send a few lines and I'll reply within a day.</p>
+        </div>
+        <div class="lines">
+          <div class="line"><span class="k">Email</span><span class="v" id="v-email">dev.mhtmsr@gmail.com</span><button class="copy" type="button" data-copy="v-email">Copy</button></div>
+          <div class="line"><span class="k">WhatsApp</span><span class="v" id="v-phone">+91 79783 19648</span><button class="copy" type="button" data-copy="v-phone">Copy</button></div>
+          <div class="line"><span class="k">LinkedIn</span><a class="v" href="https://linkedin.com/in/mhtmsr" target="_blank" rel="noopener">linkedin.com/in/mhtmsr ↗</a></div>
+        </div>
+      </div>
+      <form id="msg">
+        <label for="f-intent">I'm looking to
+          <select id="f-intent">
+            <option value="Hiring">Hire you full-time</option>
+            <option value="Project">Get a project built</option>
+            <option value="Freelance">Bring you on as a freelancer</option>
+            <option value="AI">Add GenAI or AI agents to my product</option>
+          </select>
+        </label>
+        <label for="f-name">Your name and company<input id="f-name" placeholder="e.g. Priya, Acme Labs"></label>
+        <label for="f-need">What do you need?<textarea id="f-need" placeholder="e.g. A B2B SaaS MVP with team accounts, Stripe billing and an AI assistant over our docs."></textarea></label>
+        <div class="out">
+          <a class="btn go" id="send-mail" href="#">Send by email</a>
+          <a class="btn" id="send-wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Mohit Misra · Co-founder, Director &amp; CTO, AROSCAI Technologies · Berhampur, Odisha</span>
+    <span><a href="dev.html">Engineering deep-dive</a> · <a href="Mohit_Misra_Resume_OnePage.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://linkedin.com/in/mhtmsr" target="_blank" rel="noopener">LinkedIn ↗</a></span>
+  </div>
+</footer>
+
+<script src="diagrams.js"></script>
+<script>
+const PANES = {
+  hire: { k:"For hiring managers", h:"A full-stack engineer who owns production", cta:["Discuss a role","Hiring"],
+    f:["Full-stack, GenAI, agentic AI or founding engineer roles","Currently Co-founder, Director & CTO of AROSCAI Technologies","Built and runs two live web platforms end to end","FastAPI, React, MongoDB/Postgres, LLMs and infra","Remote, or on-site in Berhampur, Odisha"] },
+  free: { k:"For teams that need hands", h:"Join your team this week", cta:["Book a freelance slot","Freelance"],
+    f:["Features, bug fixes, AI integrations, DevOps","Hourly or monthly retainer","Works in your repo and your process","Weekly demo of what shipped"] },
+  proj: { k:"For founders and businesses", h:"Your product, live in 7 days", cta:["Get a fixed quote","Project"],
+    f:["Web apps, SaaS, internal tools and AI agents","Fixed price, agreed after one call","Deployed release every 7 days","You own the code and every account"] }
+};
+const $ = id => document.getElementById(id);
+function show(k){
+  const p = PANES[k];
+  $("p-k").textContent = p.k; $("p-h").textContent = p.h;
+  $("p-list").innerHTML = p.f.map(x => `<li>${x}</li>`).join("");
+  $("p-cta").textContent = p.cta[0]; $("p-cta").dataset.intent = p.cta[1];
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.k === k));
+}
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => show(b.dataset.k)));
+
+function update(){
+  const intent = $("f-intent").selectedOptions[0].textContent;
+  const msg = `Hi Mohit,\nI'm looking to: ${intent}\nFrom: ${$("f-name").value || "-"}\n\n${$("f-need").value || ""}`;
+  $("send-wa").href = "https://wa.me/917978319648?text=" + encodeURIComponent(msg);
+  $("send-mail").href = "mailto:dev.mhtmsr@gmail.com?subject=" + encodeURIComponent(intent + ($("f-name").value ? " · " + $("f-name").value : "")) + "&body=" + encodeURIComponent(msg);
+}
+$("msg").addEventListener("input", update);
+$("msg").addEventListener("submit", e => e.preventDefault());
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-intent]");
+  if (a) { $("f-intent").value = a.dataset.intent; update(); }
+});
+
+document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+  const el = $(b.dataset.copy);
+  navigator.clipboard.writeText(el.textContent).then(() => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+}));
+
+show("hire");
+update();
+
+  // system design diagrams (data in diagrams.js): pick a system, toggle as-built / at-scale, click a box for details
+  (function(){
+    const D = (window.DIAGRAMS || []).filter(d => d.scale), svg = $('arch-svg'); if (!D || !svg) return;
+    const NS = 'http://www.w3.org/2000/svg';
+    const KINDS = { client: 'Client', edge: 'Edge / proxy', app: 'Service', ai: 'AI model / agent', data: 'Data store', queue: 'Queue / worker', ext: 'External service' };
+    const st = { d: 0, mode: 'built', sel: null };
+    const W = 170, H = 58, esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    const box = n => ({ x: n.x, y: n.y, w: n.w || W, h: n.h || H });
+    const anchor = (b, side) => ({ t: [b.x + b.w / 2, b.y], b: [b.x + b.w / 2, b.y + b.h], l: [b.x, b.y + b.h / 2], r: [b.x + b.w, b.y + b.h / 2] })[side];
+    const DIR = { t: [0, -1], b: [0, 1], l: [-1, 0], r: [1, 0] };
+    // cubic curve between two boxes: sides follow the dominant axis unless forced, e.g. "r-r"
+    const edgePath = (a, b, sides) => {
+      let s1, s2;
+      if (sides) [s1, s2] = sides.split('-');
+      else {
+        const dx = (b.x + b.w / 2) - (a.x + a.w / 2), dy = (b.y + b.h / 2) - (a.y + a.h / 2);
+        if (Math.abs(dx) > Math.abs(dy)) { s1 = dx > 0 ? 'r' : 'l'; s2 = dx > 0 ? 'l' : 'r'; }
+        else { s1 = dy > 0 ? 'b' : 't'; s2 = dy > 0 ? 't' : 'b'; }
+      }
+      const p0 = anchor(a, s1), p3 = anchor(b, s2);
+      const span = DIR[s1][0] ? Math.abs(p3[0] - p0[0]) : Math.abs(p3[1] - p0[1]);
+      const off = s1 === s2 ? 34 : Math.max(18, span / 2);
+      const p1 = [p0[0] + DIR[s1][0] * off, p0[1] + DIR[s1][1] * off], p2 = [p3[0] + DIR[s2][0] * off, p3[1] + DIR[s2][1] * off];
+      const mid = [(p0[0] + 3 * p1[0] + 3 * p2[0] + p3[0]) / 8, (p0[1] + 3 * p1[1] + 3 * p2[1] + p3[1]) / 8];
+      return { d: `M${p0} C${p1} ${p2} ${p3}`, mid };
+    };
+    const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+    const view = () => D[st.d][st.mode] || D[st.d].built;
+    // squeeze text that would overflow its box (only when the svg is rendered and measurable)
+    const fit = (t, text, max) => {
+      t.textContent = text;
+      if (t.getComputedTextLength && t.getComputedTextLength() > max) { t.setAttribute('textLength', max); t.setAttribute('lengthAdjust', 'spacingAndGlyphs'); }
+    };
+
+    const drawPanel = () => {
+      const n = view().nodes.find(x => x.id === st.sel);
+      if (!n) {
+        $('arch-panel').innerHTML = `<div><div class="k">${st.mode === 'scale' ? 'At-scale design' : 'Running today'}</div><h3>${esc(D[st.d].tab)}</h3></div>` +
+          `<p class="hint">Select any box to see what it does, where it lives in the code, and why it was designed that way.</p>`;
+        return;
+      }
+      const dd = n.detail || {};
+      $('arch-panel').innerHTML =
+        `<div><div class="k"><i style="background:var(--k-${n.kind})"></i>${KINDS[n.kind]}</div>` +
+        `<h3>${esc(n.label)}</h3><div class="ps">${esc(n.sub || '')}</div>` +
+        (dd.what ? `<p>${esc(dd.what)}</p>` : '') + `</div><div>` +
+        (dd.where ? `<div class="lbl">In the code</div><code>${esc(dd.where)}</code>` : '') +
+        (dd.talk ? `<div class="lbl">Design note</div><p class="talk">${esc(dd.talk)}</p>` : '') + `</div>`;
+    };
+
+    const highlight = () => {
+      const linked = new Set([st.sel]);
+      svg.querySelectorAll('.edge').forEach(g => {
+        const hot = !!st.sel && (g.dataset.a === st.sel || g.dataset.b === st.sel);
+        if (hot) { linked.add(g.dataset.a); linked.add(g.dataset.b); }
+        g.classList.toggle('hot', hot);
+        g.classList.toggle('dim', !!st.sel && !hot);
+      });
+      svg.querySelectorAll('.node').forEach(g => {
+        g.classList.toggle('sel', g.dataset.id === st.sel);
+        g.classList.toggle('dim', !!st.sel && !linked.has(g.dataset.id));
+        g.setAttribute('aria-pressed', g.dataset.id === st.sel);
+      });
+      drawPanel();
+    };
+
+    const draw = () => {
+      const d = D[st.d], v = view();
+      $('arch-tabs').querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-selected', i === st.d));
+      $('arch-mode').querySelectorAll('button').forEach(b => {
+        b.disabled = b.dataset.mode === 'scale' && !d.scale;
+        b.setAttribute('aria-pressed', b.dataset.mode === st.mode);
+        b.title = b.disabled ? 'This flow has no separate at-scale view' : '';
+      });
+      $('arch-sum').textContent = d.summary;
+      $('arch-notes').innerHTML = v.notes.map(t => `<li>${esc(t)}</li>`).join('');
+      svg.setAttribute('viewBox', `0 0 1000 ${v.h}`);
+      svg.setAttribute('aria-label', `${d.tab} architecture, ${st.mode === 'scale' ? 'at-scale design' : 'as built'}`);
+      svg.innerHTML = '<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="currentColor" stroke-width="1.6"/></marker></defs>';
+      (v.groups || []).forEach(g => {
+        const G = el('g', { class: 'grp' }, svg);
+        el('rect', { x: g.x, y: g.y, width: g.w, height: g.h, rx: 14 }, G);
+        el('text', { x: g.x + 14, y: g.y + 18 }, G).textContent = g.label;
+      });
+      const byId = Object.fromEntries(v.nodes.map(n => [n.id, n])), labels = [];
+      v.edges.forEach(([a, b, label, dashed, sides]) => {
+        const A = box(byId[a]), B = box(byId[b]), p = edgePath(A, B, sides);
+        const G = el('g', { class: 'edge ' + (dashed ? 'dashed' : 'flow'), 'data-a': a, 'data-b': b }, svg);
+        el('path', { d: p.d, 'marker-end': 'url(#arr)' }, G);
+        // a label wider than a short, level gap would sit on the box borders: lift it above the row
+        const gap = Math.max(B.x - (A.x + A.w), A.x - (B.x + B.w)), level = Math.abs((A.y + A.h / 2) - (B.y + B.h / 2)) < 4;
+        if (label) labels.push([G, level && gap < label.length * 6.5 + 10 ? [p.mid[0], Math.min(A.y, B.y) - 3] : p.mid, label]);
+      });
+      v.nodes.forEach(n => {
+        const b = box(n);
+        const G = el('g', { class: 'node' + (n.kind === 'ext' ? ' ext' : ''), 'data-id': n.id, tabindex: 0, role: 'button', 'aria-label': `${n.label}, ${n.sub || ''}` }, svg);
+        el('rect', { class: 'box', x: b.x, y: b.y, width: b.w, height: b.h, rx: 10 }, G);
+        el('rect', { x: b.x + 10, y: b.y + 12, width: 4, height: b.h - 24, rx: 2, fill: `var(--k-${n.kind})` }, G);
+        fit(el('text', { class: 't', x: b.x + 22, y: b.y + b.h / 2 - 3 }, G), n.label, b.w - 32);
+        fit(el('text', { class: 's', x: b.x + 22, y: b.y + b.h / 2 + 14 }, G), n.sub || '', b.w - 32);
+      });
+      // edge labels go in a top layer, each tied to its edge group for highlighting
+      labels.forEach(([G, mid, label]) => {
+        const L = el('g', { class: G.getAttribute('class'), 'data-a': G.dataset.a, 'data-b': G.dataset.b }, svg);
+        el('text', { x: mid[0], y: mid[1] - 5, 'text-anchor': 'middle' }, L).textContent = label;
+      });
+      if (!byId[st.sel]) st.sel = null;
+      highlight();
+    };
+
+    $('arch-tabs').innerHTML = D.map((d, i) => `<button type="button" role="tab" data-i="${i}">${esc(d.tab)}</button>`).join('');
+    $('arch-legend').innerHTML = Object.entries(KINDS).map(([k, t]) => `<span><i style="background:var(--k-${k})"></i>${t}</span>`).join('');
+    $('arch-tabs').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      st.d = +b.dataset.i; if (!D[st.d].scale) st.mode = 'built'; st.sel = null; draw();
+    });
+    $('arch-mode').addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.disabled) { st.mode = b.dataset.mode; draw(); } });
+    const pick = e => { const g = e.target.closest('.node'); st.sel = g && st.sel !== g.dataset.id ? g.dataset.id : null; highlight(); };
+    svg.addEventListener('click', pick);
+    svg.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.node')) { e.preventDefault(); pick(e); } });
+    draw();
+  })();
+</script>
