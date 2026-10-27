@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booking Demo</title>
+<meta name="description" content="Live demo: online appointment booking with WhatsApp reminders for clinics, gyms and salons. Built by Mohit Misra.">
+<style>
+:root{--bg:#F2F3EF;--surface:#FFF;--fg:#16181A;--muted:#5A605C;--line:#D8DCD4;--accent:#0E6B60;--accent-ink:#FFF;--wa:#1FA855}
+@media (prefers-color-scheme:dark){:root{--bg:#101312;--surface:#181C1B;--fg:#E9ECE7;--muted:#9BA29D;--line:#2B312F;--accent:#43C4AF;--accent-ink:#05201C;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 16px}
+h1{font-size:22px;margin:0}
+.muted{color:var(--muted);font-size:14px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button,.slot{border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+.seg button[aria-pressed=true],.slot[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.slot:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:600;margin:14px 0 6px}
+input,select{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+.go{width:100%;margin-top:18px;min-height:48px;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);font:600 16px system-ui;cursor:pointer}
+.go:disabled{opacity:.5;cursor:not-allowed}
+.wa{background:#E7F8EC;color:#0B3D1E;border-radius:12px;padding:14px;font-size:14.5px;white-space:pre-line;border-left:4px solid var(--wa)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.stats div{background:var(--bg);border-radius:10px;padding:10px}
+.stats b{display:block;font-size:22px}
+footer{text-align:center;margin:24px 0}
+footer a{color:var(--accent)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><h1 id="biz">Sunrise Dental Clinic</h1><div class="muted">Demo: what your customers would see</div></div>
+  <div class="seg" role="group" aria-label="Business type">
+    <button data-type="clinic" aria-pressed="true">Clinic</button>
+    <button data-type="gym" aria-pressed="false">Gym</button>
+    <button data-type="salon" aria-pressed="false">Salon</button>
+  </div>
+</header>
+
+<div class="seg" role="group" aria-label="View" style="margin-bottom:12px">
+  <button data-view="book" aria-pressed="true">Customer: Book</button>
+  <button data-view="owner" aria-pressed="false">Owner: Dashboard</button>
+</div>
+
+<form class="card" id="book">
+  <label for="svc">Service</label>
+  <select id="svc"></select>
+  <label for="date">Date</label>
+  <input type="date" id="date" required>
+  <label>Time</label>
+  <div class="slots" id="slots"></div>
+  <label for="name">Your name</label>
+  <input id="name" required autocomplete="name">
+  <label for="phone">WhatsApp number</label>
+  <input id="phone" type="tel" required pattern="[0-9+ ]{10,15}" placeholder="98765 43210" autocomplete="tel">
+  <button class="go" id="submit" disabled>Confirm booking</button>
+</form>
+
+<div class="card" id="done" hidden>
+  <strong>Booked! The customer instantly gets this on WhatsApp:</strong>
+  <p class="wa" id="msg"></p>
+  <p class="muted">A reminder goes out automatically 2 hours before the appointment. Owners get a daily summary.</p>
+  <button class="go" id="again">Book another</button>
+</div>
+
+<div class="card" id="owner" hidden>
+  <div class="stats">
+    <div><span class="muted">Today</span><b id="sToday">0</b></div>
+    <div><span class="muted">This week</span><b id="sWeek">0</b></div>
+    <div><span class="muted">Est. revenue</span><b id="sRev">₹0</b></div>
+  </div>
+  <table><thead><tr><th>When</th><th>Customer</th><th>Service</th></tr></thead><tbody id="rows"></tbody></table>
+  <p class="muted" id="empty">No bookings yet: book one from the customer view.</p>
+</div>
+
+<footer class="muted">Want this for your business? Website + booking + WhatsApp reminders.<br>
+<a href="https://dev-mhtmsr.github.io/business.html">Mohit Misra</a> · <a href="https://wa.me/917978319648">WhatsApp +91 79783 19648</a></footer>
+</div>
+
+<script>
+const TYPES = {
+  clinic: {name: 'Sunrise Dental Clinic', svc: [['Consultation', 300], ['Cleaning', 800], ['Root canal (1st sitting)', 2500]]},
+  gym:    {name: 'IronCore Fitness',     svc: [['Free trial session', 0], ['Personal training', 500], ['Monthly membership', 1500]]},
+  salon:  {name: 'Glow Unisex Salon',    svc: [['Haircut', 250], ['Facial', 900], ['Bridal makeup trial', 3000]]},
+};
+const TIMES = ['09:00','10:00','11:00','12:00','16:00','17:00','18:00','19:00'];
+const $ = id => document.getElementById(id);
+let type = 'clinic', time = null;
+// ponytail: localStorage only, it's a sales demo; real product uses the FastAPI + Postgres backend
+const load = () => { try { return JSON.parse(localStorage.getItem('bk-' + type)) || []; } catch { return []; } };
+const save = b => { try { localStorage.setItem('bk-' + type, JSON.stringify(b)); } catch {} };
+const press = (sel, el) => document.querySelectorAll(sel).forEach(b => b.setAttribute('aria-pressed', b === el));
+const iso = d => d.toLocaleDateString('en-CA'); // local YYYY-MM-DD; toISOString is UTC and shows yesterday before 05:30 IST
+
+function renderSlots() {
+  const taken = load().filter(b => b.date === $('date').value).map(b => b.time);
+  $('slots').innerHTML = TIMES.map(t => `<button type="button" class="slot" aria-pressed="${t === time}" ${taken.includes(t) ? 'disabled' : ''}>${t}</button>`).join('');
+  validate();
+}
+function validate() { $('submit').disabled = !(time && $('date').value && $('name').value.trim() && $('phone').checkValidity()); }
+function renderType() {
+  $('biz').textContent = TYPES[type].name;
+  $('svc').innerHTML = TYPES[type].svc.map(([n, p], i) => `<option value="${i}">${n}${p ? ' · ₹' + p : ' · Free'}</option>`).join('');
+  time = null; renderSlots(); renderOwner();
+}
+function renderOwner() {
+  const b = load().sort((x, y) => (x.date + x.time).localeCompare(y.date + y.time));
+  const today = iso(new Date()), weekEnd = iso(new Date(Date.now() + 7 * 864e5));
+  $('sToday').textContent = b.filter(x => x.date === today).length;
+  $('sWeek').textContent = b.filter(x => x.date >= today && x.date <= weekEnd).length;
+  $('sRev').textContent = '₹' + b.reduce((s, x) => s + x.price, 0).toLocaleString('en-IN');
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  $('rows').innerHTML = b.map(x => `<tr><td>${x.date} ${x.time}</td><td>${esc(x.name)}</td><td>${esc(x.svc)}</td></tr>`).join('');
+  $('empty').hidden = b.length > 0;
+}
+
+document.querySelectorAll('[data-type]').forEach(btn => btn.onclick = () => { type = btn.dataset.type; press('[data-type]', btn); renderType(); });
+document.querySelectorAll('[data-view]').forEach(btn => btn.onclick = () => {
+  press('[data-view]', btn);
+  const owner = btn.dataset.view === 'owner';
+  $('owner').hidden = !owner; $('book').hidden = owner; $('done').hidden = true;
+  if (owner) renderOwner();
+});
+$('slots').onclick = e => { if (e.target.matches('.slot:not(:disabled)')) { time = e.target.textContent; renderSlots(); } };
+$('date').onchange = () => { time = null; renderSlots(); };
+$('name').oninput = $('phone').oninput = validate;
+$('book').onsubmit = e => {
+  e.preventDefault();
+  const [svc, price] = TYPES[type].svc[$('svc').value];
+  const b = {date: $('date').value, time, name: $('name').value.trim(), svc, price};
+  save([...load(), b]);
+  const when = new Date(b.date + 'T00:00').toLocaleDateString('en-IN', {weekday: 'short', day: 'numeric', month: 'short'});
+  $('msg').textContent = `Hi ${b.name}, your ${svc} at ${TYPES[type].name} is confirmed for ${when}, ${time}.\nReply 1 to confirm, 2 to reschedule.`;
+  $('book').hidden = true; $('done').hidden = false;
+};
+$('again').onclick = () => { $('book').reset(); time = null; $('date').value = iso(new Date()); $('done').hidden = true; $('book').hidden = false; renderSlots(); };
+
+$('date').min = iso(new Date());
+$('date').value = iso(new Date());
+renderType();
+</script>
+</body>
+</html>
