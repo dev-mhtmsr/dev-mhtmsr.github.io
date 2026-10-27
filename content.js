@@ -13,15 +13,15 @@
 window.CONTENT = {
 
   name: "Mohit Misra",
-  location: "Bhubaneswar, India",
+  location: "Berhampur, Odisha, India",
   siteTitle: "Mohit Misra",
-  metaDescription: "Mohit Misra, full-stack developer in Bhubaneswar. Co-founder of AROSCAI and Full Stack AI Developer at VLSIPROF Technologies. Builds web apps with FastAPI, React and Postgres, and the AI features inside them.",
+  metaDescription: "Mohit Misra, full-stack developer in Berhampur, Odisha. Co-founder of AROSCAI and Full Stack AI Developer at VLSIPROF Technologies. Builds web apps with FastAPI, React and Postgres, and the AI features inside them.",
   resumeFile: "Mohit_Misra_Resume_OnePage.pdf",   // must match the PDF filename in the repo
-  showResume: false,                              // true shows a "Résumé (PDF)" link
+  showResume: true,                              // true shows a "Résumé (PDF)" link
 
   /* ---------- INTRO ---------- */
   intro: {
-    role: "Full-stack developer · Bhubaneswar, India",
+    role: "Full-stack developer · Berhampur, Odisha, India",
     status: "Full Stack GenAI & Agentic AI Developer",
     now: [
       { org: "AROSCAI Technologies",  role: "Co-founder & CTO",        since: "2021", url: "https://www.aroscai.com" },
@@ -29,7 +29,7 @@ window.CONTENT = {
     ],
     heading: "I build web software for real businesses, and the AI features that go inside it.",
     paragraphs: [
-      "I'm Mohit. In 2021 I co-founded AROSCAI, a smart-home company in Bhubaneswar, and I've written most of its software since: the website and its support chatbot, a tool that quotes products from a photo of a switchboard, and the Online Information System our staff run the business on.",
+      "I'm Mohit. In 2021 I co-founded AROSCAI, a smart-home company in Berhampur, Odisha, and I've written most of its software since: the website and its support chatbot, a tool that quotes products from a photo of a switchboard, and the Online Information System our staff run the business on.",
       "I'm also a Full Stack AI Developer at VLSIPROF Technologies, where I built Knowledge Spark, their learning and hiring platform. Both products are live, and I look after them in production.",
       "Day to day that means Python and FastAPI on the backend, React or Next.js on the front, Postgres underneath, and Docker on AWS or a VPS."
     ]
